@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #Necesitamos instalar el paquete python3-tk
 # Load libraries
 import pandas

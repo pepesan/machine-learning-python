@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Python version
 import sys
 print('Python: {}'.format(sys.version))

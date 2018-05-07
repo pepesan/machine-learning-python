@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #importacion de pandas
 import pandas
 #importación de los modelos de datos de sklearn

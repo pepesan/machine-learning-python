@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Load libraries
 import pandas
 from pandas.plotting import scatter_matrix

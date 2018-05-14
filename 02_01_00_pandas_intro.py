@@ -23,10 +23,14 @@ df.to_csv(Location,index=False,header=False)
 #lectura de fichero
 df = pd.read_csv(Location, header=None)
 df = pd.read_csv(Location, names=['Names','Births'])
+print("Datos del DataFrame, cargado desde CSV")
+print(df)
 
 Sorted = df.sort_values(['Births'], ascending=False)
+print("Imprime la primera fila ordenada por nacimientos")
 print(Sorted.head(1))
 
+print("Imprime el valor máximo de nacimientos")
 print(df['Births'].max())
 
 
@@ -45,7 +49,10 @@ print(s.describe())
 d = {'col1': [1, 2], 'col2': [3, 4]}
 df = pd.DataFrame(data=d)
 print("DataFrame")
+print(df)
 print(df.shape)
+print("Describe")
+print(df.describe())
 
 """
 

@@ -19,19 +19,22 @@ print(iris.target_names)
 print(iris.target)
 
 #Dividimos los datos en entrenamiento y pruebas
-X_train, X_test, Y_train, Y_test=train_test_split(iris['data'],iris['target'], train_size=0.90, test_size=0.10)
+X_train, X_test, Y_train, Y_test=train_test_split(iris['data'],iris['target'],
+                                                  train_size=0.80, test_size=0.20)
+#Datos para entrenamiento
 #Forma X_train
 print(X_train.shape)
-#Forma X_test
-print(Y_test.shape)
 #Forma Y_train
-print(X_train.shape)
+print(Y_train.shape)
+#Datos para prueba
+#Forma X_test
+print(X_test.shape)
 #Forma Y_test
 print(Y_test.shape)
 
 #Establecemos las configuraciones del algoritmo
 #empezando por el número de vecinos
-knn=KNeighborsClassifier(n_neighbors=7)
+knn=KNeighborsClassifier(n_neighbors=6)
 
 #entrenamos al algoritmo con los datos (_train)
 knn.fit(X_train,Y_train)

@@ -12,7 +12,7 @@ Y=iris.target
 # n_clusters busca un número de agrupaciones
 # hay que jugar con este valor para encontrar el ideal
 # max_iter define el número de veces que ejecuta el algoritmo
-km=KMeans(n_clusters=3,max_iter=10000)
+km=KMeans(n_clusters=10,max_iter=10000)
 
 km.fit(X)
 

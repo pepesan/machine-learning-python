@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from bokeh.plotting import figure, output_file, show
 
 # Datos de los puntos

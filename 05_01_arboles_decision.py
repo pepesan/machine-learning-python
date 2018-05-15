@@ -88,5 +88,5 @@ def genera_png(tree, feature_names, filepath):
 
     graph.write_png(filepath)
 
-genera_png(clf_gini,'./figures/tree.png')
-genera_png(clf_entropy,'./figures/tree2.png')
+genera_png(clf_gini,feature_names,'./figures/tree.png')
+genera_png(clf_entropy,feature_names,'./figures/tree2.png')

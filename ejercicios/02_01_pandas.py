@@ -6,8 +6,8 @@ import numpy as np
 #Step 2. Import the dataset from this address.
 #Step 3. Assign it to a variable called chipo.
 
-url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'
-
+#url = 'https://raw.githubusercontent.com/justmarkham/DAT8/master/data/chipotle.tsv'
+url = './chipotle.tsv'
 chipo = pd.read_csv(url, sep='\t')
 
 #Step 4. See the first 10 entries
@@ -47,7 +47,8 @@ print("#10")
 c = chipo.groupby('item_name')
 c = c.sum()
 c = c.sort_values(['quantity'], ascending=False)
-print(c.head(1))
+#print(c.head(10))
+print(c)
 #Step 11. What was the most ordered item in the choice_description column?
 c = chipo.groupby('choice_description').sum()
 c = c.sort_values(['quantity'], ascending=False)

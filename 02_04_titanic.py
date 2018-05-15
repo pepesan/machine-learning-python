@@ -4,7 +4,7 @@
 import random
 import numpy as np
 import pandas as pd
-from sklearn import datasets, svm, cross_validation, tree, preprocessing, metrics
+from sklearn import datasets, svm, model_selection, tree, preprocessing, metrics
 import sklearn.ensemble as ske
 #pip install tensorflow
 import tensorflow as tf
@@ -77,7 +77,7 @@ X = processed_df.drop(['survived'], axis=1).values
 y = processed_df['survived'].values
 
 #extracción de datos de entrenamiento y pruebas
-X_train, X_test, y_train, y_test = cross_validation.train_test_split(X,y,test_size=0.2)
+X_train, X_test, y_train, y_test = model_selection.train_test_split(X,y,test_size=0.2)
 
 #Creación del algoritmo de arbol de decisiones
 clf_dt = tree.DecisionTreeClassifier(max_depth=10)
@@ -89,9 +89,9 @@ print("puntuación")
 print(clf_dt.score (X_test, y_test))
 
 
-shuffle_validator = cross_validation.ShuffleSplit(len(X), n_iter=20, test_size=0.2, random_state=0)
+shuffle_validator = model_selection.ShuffleSplit(len(X),  test_size=0.2, random_state=0)
 def test_classifier(clf):
-    scores = cross_validation.cross_val_score(clf, X, y, cv=shuffle_validator)
+    scores = model_selection.cross_val_score(clf, X, y, cv=shuffle_validator)
     print("Accuracy: %0.4f (+/- %0.2f)" % (scores.mean(), scores.std()))
 #puntuación tras randomización
 print("puntuación random")

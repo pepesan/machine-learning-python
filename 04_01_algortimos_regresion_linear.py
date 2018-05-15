@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_boston
+from sklearn.externals import joblib
 
 boston = load_boston()
 print(boston.keys())
@@ -31,7 +32,7 @@ lm= LinearRegression()
 print(lm)
 
 #Creamos las muestras de entrenamiento y pruebas
-X_train, X_test,Y_train,  Y_test = train_test_split(X,bos['PRICE'], test_size=0.10, random_state=5)
+X_train, X_test,Y_train,  Y_test = train_test_split(X,bos['PRICE'], test_size=0.25, random_state=2)
 print(X_train.shape)
 print(Y_train.shape)
 print(X_test.shape)
@@ -41,7 +42,7 @@ print(Y_test.shape)
 lm.fit(X_train,Y_train)
 
 score=lm.score(X_test,Y_test)
-print(score)
+print("Score Modelo:",score)
 
 
 plt.scatter(lm.predict(X_train),lm.predict(X_train)- Y_train, c="b",s=40, alpha=0.5)
@@ -50,3 +51,12 @@ plt.hlines(y=0, xmax=50, xmin=0)
 plt.title("Diagrama de dispersión de entrenamiento (azul), y pruebas (verde)")
 #plt.show()
 
+
+#Guardar el modelo para usarlo más adelante
+localizacion_modelo="./modelos/modelo_regresion_linear_boston.pkl"
+joblib.dump(lm,localizacion_modelo)
+
+#recuperar el modelo guardado anteriormente
+lm=joblib.load(localizacion_modelo)
+score=lm.score(X_test,Y_test)
+print("Score guardado:",score)

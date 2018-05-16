@@ -5,8 +5,10 @@ from sklearn import datasets, cluster
 from sklearn.feature_extraction.image import grid_to_graph
 
 faces = datasets.fetch_olivetti_faces(shuffle=True)
-
+print(faces.keys())
 images = faces.images
+target= faces.target
+
 X = np.reshape(images, (len(images), -1))
 connectivity = grid_to_graph(*images[0].shape)
 
@@ -14,6 +16,7 @@ agglo = cluster.FeatureAgglomeration(connectivity=connectivity,
                                      n_clusters=32)
 
 agglo.fit(X)
+
 X_reduced = agglo.transform(X)
 
 X_restored = agglo.inverse_transform(X_reduced)

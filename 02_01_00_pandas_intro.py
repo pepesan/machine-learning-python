@@ -54,35 +54,8 @@ print(df.shape)
 print("Describe")
 print(df.describe())
 
-"""
 
-#Borrado de fichero csv
-import os
-os.remove(Location)
-
-import matplotlib.pyplot as plt
-# Create graph
-df['Births'].plot()
-
-# Maximum value in the data set
-MaxValue = df['Births'].max()
-
-# Name associated with the maximum value
-MaxName = df['Names'][df['Births'] == df['Births'].max()].values
-
-# Text to display on graph
-Text = str(MaxValue) + " - " + MaxName
-
-# Add text to graph
-plt.annotate(Text, xy=(1, MaxValue), xytext=(8, 0),
-                 xycoords=('axes fraction', 'data'), textcoords='offset points')
-
-print("The most popular name")
-df=df[df['Births'] == df['Births'].max()]
-#plt.show()
-"""
-
-
+#Cómo cargar un DataFrame desde un Bunch de datos de sklearn
 import numpy as np
 from sklearn.datasets import load_iris
 

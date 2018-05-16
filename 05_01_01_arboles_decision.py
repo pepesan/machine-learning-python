@@ -39,7 +39,7 @@ X_train, X_test, y_train, y_test = train_test_split( X, Y, test_size = 0.3, rand
 #Entrenamos el algoritmo con gini
 
 clf_gini = DecisionTreeClassifier(criterion = "gini", random_state = 100,
-                               max_depth=2, min_samples_leaf=5)
+                               max_depth=3, min_samples_leaf=5)
 clf_gini.fit(X_train, y_train)
 print(clf_gini)
 

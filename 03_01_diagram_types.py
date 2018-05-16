@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+#Necesitamos instalar el paquete python3-tk con sudo apt-get install
 # Import the necessary packages and modules
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -24,9 +25,9 @@ fig = plt.figure()
 ax = fig.add_subplot(111)
 
 #Define las líneas a dibujar mediante puntos definidos en dos ejes
-ax.plot([1, 2, 3, 4], [10, 20, 25, 30], color='lightblue', linewidth=3)
+ax.plot([1, 2, 3, 4], [10, 20, 23, 30], color='lightblue', linewidth=3)
 #Define los puntos que quiere pintar, 4 en este caso con dos arrays
-ax.scatter([0.3, 3.8, 1.2, 2.5], [11, 25, 9, 26], color='darkgreen', marker='^')
+ax.scatter([0.3, 3.8, 1.2, 2.5], [11, 25, 9, 26],color='darkgreen', marker='^')
 #Define los límites de la gráfica
 ax.set_xlim(0.0, 4.5)
 #Muestra la grárica

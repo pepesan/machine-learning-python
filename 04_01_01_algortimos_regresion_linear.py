@@ -26,13 +26,16 @@ bos['PRICE']=boston.target
 
 #Para generar X quitamos la columna del precio
 X= bos.drop("PRICE",axis=1)
+Y=bos['PRICE']
 
 #Creamos el modelo
 lm= LinearRegression()
 print(lm)
 
 #Creamos las muestras de entrenamiento y pruebas
-X_train, X_test,Y_train,  Y_test = train_test_split(X,bos['PRICE'], test_size=0.25, random_state=2)
+X_train, X_test,Y_train,  Y_test = train_test_split(X,Y, test_size=0.25
+                                                    , random_state=2
+                                                    )
 print(X_train.shape)
 print(Y_train.shape)
 print(X_test.shape)
@@ -45,13 +48,6 @@ score=lm.score(X_test,Y_test)
 print("Score Modelo:",score)
 
 
-plt.scatter(lm.predict(X_train),lm.predict(X_train)- Y_train, c="b",s=40, alpha=0.5)
-plt.scatter(lm.predict(X_test),lm.predict(X_test)- Y_test, c="g",s=40,)
-plt.hlines(y=0, xmax=50, xmin=0)
-plt.title("Diagrama de dispersión de entrenamiento (azul), y pruebas (verde)")
-#plt.show()
-
-
 #Guardar el modelo para usarlo más adelante
 localizacion_modelo="./modelos/modelo_regresion_linear_boston.pkl"
 joblib.dump(lm,localizacion_modelo)
@@ -60,3 +56,11 @@ joblib.dump(lm,localizacion_modelo)
 lm=joblib.load(localizacion_modelo)
 score=lm.score(X_test,Y_test)
 print("Score guardado:",score)
+
+
+
+plt.scatter(lm.predict(X_train),lm.predict(X_train)- Y_train, c="b",s=40, alpha=0.5)
+plt.scatter(lm.predict(X_test),lm.predict(X_test)- Y_test, c="g",s=40,)
+plt.hlines(y=0, xmax=50, xmin=0)
+plt.title("Diagrama de dispersión de entrenamiento (azul), y pruebas (verde)")
+plt.show()

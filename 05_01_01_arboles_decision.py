@@ -46,7 +46,7 @@ print(clf_gini)
 
 #Entrenamos el algoritmo con entropy
 clf_entropy = DecisionTreeClassifier(criterion = "entropy", random_state = 100,
- max_depth=2, min_samples_leaf=5)
+ max_depth=3, min_samples_leaf=5)
 clf_entropy.fit(X_train, y_train)
 
 

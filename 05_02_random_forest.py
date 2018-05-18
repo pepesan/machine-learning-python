@@ -42,7 +42,7 @@ print(features.head(5))
 # Vectoriza los días de la semana como columnas
 features = pd.get_dummies(features)
 print("Datos vectorizados")
-print(features.head(5))
+print(features.head(7))
 # Display the first 5 rows of the last 12 columns
 #print("Detalle de Datos vectorizados")
 #print(features.iloc[:,5:].head(5))
@@ -62,7 +62,8 @@ features = np.array(features)
 
 
 # Obtengo las características y etiquetas de entrenamiento y pruebas
-train_features, test_features, train_labels, test_labels = train_test_split(features, labels, test_size = 0.25, random_state = 42)
+train_features, test_features, train_labels, test_labels = \
+    train_test_split(features, labels, test_size = 0.25, random_state = 42)
 
 print('Training Features Shape:', train_features.shape)
 print('Training Labels Shape:', train_labels.shape)
@@ -118,5 +119,5 @@ def genera_png(tree, feature_names, filepath):
     graph.write_png(filepath)
 
 # Pull out one tree from the forest
-tree = rf.estimators_[5]
+tree = rf.estimators_[1]
 genera_png(tree,feature_list,'./figures/random_tree.png')

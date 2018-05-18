@@ -20,7 +20,7 @@ for pairidx, pair in enumerate([[0, 1], [0, 2], [0, 3],
 
     # Train
     clf = DecisionTreeClassifier(criterion = "gini", random_state = 100,
-                               max_depth=3, min_samples_leaf=5).fit(X, y)
+                               max_depth=2, min_samples_leaf=5).fit(X, y)
 
     # Plot the decision boundary
     plt.subplot(2, 3, pairidx + 1)
@@ -48,3 +48,29 @@ plt.suptitle("Decision surface of a decision tree using paired features")
 plt.legend(loc='lower right', borderpad=0, handletextpad=0)
 plt.axis("tight")
 plt.show()
+
+
+
+from sklearn import tree
+import pydotplus
+from io import StringIO
+
+# Define training and target set for the classifier
+train = [[1,2,3],[2,5,1],[2,1,7]]
+target = [10,20,30]
+
+# Initialize Classifier. Random values are initialized with always the same random seed of value 0
+# (allows reproducible results)
+dectree = tree.DecisionTreeClassifier(random_state=0)
+dectree.fit(train, target)
+
+X = iris.data
+y = iris.target
+clf = DecisionTreeClassifier(criterion = "gini", random_state = 100,
+                               max_depth=3, min_samples_leaf=5).fit(X, y)
+
+
+dotfile = StringIO()
+tree.export_graphviz(clf, out_file=dotfile)
+graph=pydotplus.graph_from_dot_data(dotfile.getvalue())
+graph.write_png("./figures/dtree.png")

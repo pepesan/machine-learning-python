@@ -88,5 +88,6 @@ def genera_png(tree, feature_names, filepath):
 
     graph.write_png(filepath)
 
+#Values son las posibilidades de que se de cada clase (etiqueta)
 genera_png(clf_gini,feature_names,'./figures/tree.png')
 genera_png(clf_entropy,feature_names,'./figures/tree2.png')

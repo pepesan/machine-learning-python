@@ -17,6 +17,7 @@ from tflearn.layers.conv import conv_2d, max_pool_2d
 from tflearn.layers.estimator import regression
 from tflearn.data_preprocessing import ImagePreprocessing
 from tflearn.data_augmentation import ImageAugmentation
+import tensorflow as tf
 
 # Data loading and preprocessing
 from tflearn.datasets import cifar10
@@ -50,9 +51,10 @@ network = fully_connected(network, 10, activation='softmax')
 network = regression(network, optimizer='adam',
                      loss='categorical_crossentropy',
                      learning_rate=0.001)
-
+logs_path = 'logs/image2'
 # Train using classifier
-model = tflearn.DNN(network, tensorboard_verbose=0)
+# tensorboard --logdir='logs/image2'
+model = tflearn.DNN(network, tensorboard_verbose=1,tensorboard_dir=logs_path)
 model.fit(X, Y, n_epoch=50, shuffle=True, validation_set=(X_test, Y_test),
           show_metric=True, batch_size=96, run_id='cifar10_cnn')
 score=model.evaluate(X_test,Y_test)

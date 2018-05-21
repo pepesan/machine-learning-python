@@ -3,8 +3,8 @@ import numpy as np
 import tflearn
 
 # Download the Titanic dataset
-from tflearn.datasets import titanic
-titanic.download_dataset('titanic_dataset.csv')
+#from tflearn.datasets import titanic
+#titanic.download_dataset('./csv/titanic_dataset.csv')
 
 # Load CSV file, indicate that the first column represents labels
 from tflearn.data_utils import load_csv
@@ -31,16 +31,17 @@ data = preprocess(data, to_ignore)
 
 # Build neural network
 net = tflearn.input_data(shape=[None, 6])
-net = tflearn.fully_connected(net, 32)
-net = tflearn.fully_connected(net, 32)
+net = tflearn.fully_connected(net, 3, activation="relu")
+net = tflearn.fully_connected(net, 2, activation="relu")
 net = tflearn.fully_connected(net, 2, activation='softmax')
 net = tflearn.regression(net)
 
-
+logs_path = 'logs/basic'
+# tensorboard --logdir='logs/basic'
 # Define model
-model = tflearn.DNN(net)
+model = tflearn.DNN(net,  tensorboard_verbose=1,tensorboard_dir=logs_path)
 # Start training (apply gradient descent algorithm)
-model.fit(data, labels, n_epoch=10, batch_size=16, show_metric=True)
+model.fit(data, labels, n_epoch=1900, batch_size=1000, show_metric=True)
 
 
 

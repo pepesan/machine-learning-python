@@ -32,8 +32,11 @@ decoder = tflearn.fully_connected(decoder, 784, activation='sigmoid')
 net = tflearn.regression(decoder, optimizer='adam', learning_rate=0.001,
                          loss='mean_square', metric=None)
 
+logs_path = 'logs/autoencoder'
+# Train using classifier
+# tensorboard --logdir='logs/autoencoder'
 # Training the auto encoder
-model = tflearn.DNN(net, tensorboard_verbose=0)
+model = tflearn.DNN(net,  tensorboard_verbose=1,tensorboard_dir=logs_path)
 model.fit(X, X, n_epoch=20, validation_set=(testX, testX),
           run_id="auto_encoder", batch_size=256)
 

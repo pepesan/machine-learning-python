@@ -54,3 +54,8 @@ dicaprio, winslet = preprocess([dicaprio, winslet], to_ignore)
 pred = model.predict([dicaprio, winslet])
 print("DiCaprio Surviving Rate:", pred[0][1])
 print("Winslet Surviving Rate:", pred[1][1])
+
+location="./modelos/titanic.model"
+model.save(location)
+model.load(location)
+print(model.session)

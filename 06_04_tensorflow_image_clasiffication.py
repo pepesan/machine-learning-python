@@ -56,7 +56,7 @@ logs_path = 'logs/image2'
 # tensorboard --logdir='logs/image2'
 model = tflearn.DNN(network, tensorboard_verbose=1,tensorboard_dir=logs_path)
 model.fit(X, Y, n_epoch=50, shuffle=True, validation_set=(X_test, Y_test),
-          show_metric=True, batch_size=96, run_id='cifar10_cnn')
+          show_metric=True, batch_size=5000, run_id='cifar10_cnn')
 score=model.evaluate(X_test,Y_test)
 print("Score", score)
 

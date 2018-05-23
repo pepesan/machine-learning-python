@@ -145,12 +145,6 @@ def main(_):
              train_step.run(feed_dict={bottleneck_layer:x_feed , y_: y_feed, keep_prob: 0.8})
 
       predicted = tf.argmax(y_conv, 1)
-      if FLAGS.predict_image != "":
-          with tf.Session() as sess:
-              x_single_img = sess.run(convert_single_image_to_bottlenecks(FLAGS.predict_image))
-              print('You got %s'%le.inverse_transform(sess.run(predicted,feed_dict={x:x_single_img}))[0])
-
-
 
 
 
@@ -174,12 +168,6 @@ if __name__ == '__main__':
       default='images',
       help='Absolute path to image directory.'
   )
-  parser.add_argument(
-         '--predict_image',
-         type=str,
-         default="",
-         help='Unknown image'
-     )
 
   FLAGS, unparsed = parser.parse_known_args()
   tf.app.run(main=main, argv=[sys.argv[0]] + unparsed)

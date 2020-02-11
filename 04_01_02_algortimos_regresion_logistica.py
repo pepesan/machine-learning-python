@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 
 from sklearn.datasets import load_digits
+# carga el data set
+# en este caso son números pintados (imagen)
+# 8x8 pixeles del tamaño, 64 en total
+# la clasificación es adivinar el número pintado
 digits = load_digits()
 
 # Print to show there are 1797 images (8 by 8 images for a dimensionality of 64)

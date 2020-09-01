@@ -6,20 +6,26 @@ import pandas as pd
 
 
 # The inital set of baby names and bith rates
-names = ['Bob','Jessica','Mary','John','Mel']
+names = ['Bob', 'Jessica', 'Mary', 'John', 'Mel']
 births = [968, 155, 77, 578, 973]
 #Dataset
 BabyDataSet = list(zip(names,births))
 print("DataSet")
 print(BabyDataSet)
 # [('Bob', 968), ('Jessica', 155), ('Mary', 77), ('John', 578), ('Mel', 973)]
-df = pd.DataFrame(data = BabyDataSet, columns=['Names', 'Births'])
+df = pd.DataFrame(data=BabyDataSet, columns=['Names', 'Births'])
 print("DataFrame")
 print(df)
+print("DataFrame Shape")
+print(df.shape)
+print("DataFrame Describe")
+print(df.describe())
+print("DataFrame Describe Shape")
+print(df.describe().shape)
 #veremos las filas y las columnas del DataFrame
-Location='./csv/births1880.csv'
-df.to_csv(Location,index=False,header=False)
-
+Location = './csv/births1880.csv'
+df.to_csv(Location, index=False, header=False)
+print(df)
 #lectura de fichero
 df = pd.read_csv(Location, header=None)
 df = pd.read_csv(Location, names=['Names','Births'])
@@ -28,7 +34,8 @@ print(df)
 
 Sorted = df.sort_values(['Births'], ascending=False)
 print("Imprime la primera fila ordenada por nacimientos")
-print(Sorted.head(1))
+print(Sorted)
+print(Sorted.head(2))
 
 print("Imprime el valor máximo de nacimientos")
 print(df['Births'].max())

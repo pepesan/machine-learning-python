@@ -31,7 +31,7 @@ boat: Lifeboat (if survived)
 body: Body number (if did not survive and body was recovered)
 """
 
-print (titanic_df.head(10))
+print(titanic_df.head(10))
 
 print("Agrupados por clase")
 print(titanic_df.groupby('pclass').mean())
@@ -86,13 +86,14 @@ clf_dt = tree.DecisionTreeClassifier(max_depth=10)
 clf_dt.fit (X_train, y_train)
 #Puntuación
 print("puntuación")
-print(clf_dt.score (X_test, y_test))
+print(clf_dt.score(X_test, y_test))
 
 
 shuffle_validator = model_selection.ShuffleSplit(len(X),  test_size=0.2, random_state=0)
 def test_classifier(clf):
     scores = model_selection.cross_val_score(clf, X, y, cv=shuffle_validator)
     print("Accuracy: %0.4f (+/- %0.2f)" % (scores.mean(), scores.std()))
+
 #puntuación tras randomización
 print("puntuación random")
 print(test_classifier(clf_dt))
@@ -111,7 +112,10 @@ print("puntuación clasificador de votos")
 test_classifier(eclf)
 
 """
-tf_clf_dnn = skflow.TensorFlowDNNClassifier(hidden_units=[20, 40, 20], n_classes=2, batch_size=256, steps=1000, learning_rate=0.05)
-tf_clf_dnn.fit(X_train, y_train)
-tf_clf_dnn.score(X_test, y_test)
+tf_clf_dnn = tf.estimator.DNNClassifier(hidden_units=[20, 40, 20], n_classes=2, feature_columns='survived')
+tf_clf_dnn.train(X_train, y_train)
+score = tf_clf_dnn.score(X_test, y_test)
+print("puntuación red neuronal")
+print(score)
 """
+

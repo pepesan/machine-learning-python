@@ -9,7 +9,7 @@ print('Pandas version: ' + pd.__version__)
 
 
 # Our small data set
-d = [0,1,2,3,4,5,6,7,8,9]
+d = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 # Create dataframe
 df = pd.DataFrame(d)

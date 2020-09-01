@@ -30,7 +30,7 @@ print(dataset.describe())
 print(dataset.groupby('class').size())
 
 # box and whisker plots
-dataset.plot(kind='box', subplots=True, layout=(2,2), sharex=False, sharey=False)
+dataset.plot(kind='box', subplots=True, layout=(2, 2), sharex=False, sharey=False)
 plt.show()
 
 # histograms
@@ -57,7 +57,7 @@ scoring = 'accuracy'
 
 # Spot Check Algorithms
 models = []
-models.append(('LR', LogisticRegression()))
+models.append(('LR', LogisticRegression(max_iter=10000)))
 models.append(('LDA', LinearDiscriminantAnalysis()))
 models.append(('KNN', KNeighborsClassifier()))
 models.append(('CART', DecisionTreeClassifier()))
@@ -67,7 +67,7 @@ models.append(('SVM', SVC()))
 results = []
 names = []
 for name, model in models:
-	kfold = model_selection.KFold(n_splits=10, random_state=seed)
+	kfold = model_selection.KFold(n_splits=10, random_state=seed, shuffle=True)
 	cv_results = model_selection.cross_val_score(model, X_train, Y_train, cv=kfold, scoring=scoring)
 	results.append(cv_results)
 	names.append(name)

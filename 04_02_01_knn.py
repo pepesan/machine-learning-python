@@ -36,17 +36,17 @@ print(Y_test.shape)
 """
 #Establecemos las configuraciones del algoritmo
 #empezando por el número de vecinos
-knn=KNeighborsClassifier(n_neighbors=10,weights='distance')
+knn=KNeighborsClassifier(n_neighbors=10, weights='distance')
 
 #entrenamos al algoritmo con los datos (_train)
 knn.fit(X_train,Y_train)
 
 #comprobamos la validez del algortimo
-score=knn.score(X_test,Y_test)
-print (score)
+score = knn.score(X_test,Y_test)
+print(score)
 
 #Ejemplo de flor con sus características
-ret=knn.predict([[1.2,3.4,5.6,1.1]])
+ret = knn.predict([[1.2, 3.4, 5.6, 1.1]])
 #Predicción de tipo de flor
 print(iris.target_names[ret])
 
@@ -87,7 +87,7 @@ Z = clf.predict(np.c_[xx.ravel(), yy.ravel()])
 # Put the result into a color plot
 Z = Z.reshape(xx.shape)
 plt.figure()
-plt.pcolormesh(xx, yy, Z, cmap=cmap_light)
+plt.pcolormesh(xx, yy, Z, cmap=cmap_light, shading='auto')
 
 # Plot also the training points
 plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap_bold)

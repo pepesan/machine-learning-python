@@ -9,7 +9,8 @@ import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 from sklearn.datasets import load_boston
-from sklearn.externals import joblib
+from joblib import dump, load
+
 # Boston son datos de casas
 # Aqui cargo el dataset de datos originales
 # gracias a la biblioteca de scikit learn que provee este dataset
@@ -78,13 +79,13 @@ print("Score Modelo:",score)
 # definimos donde lo guardamos!!! el fichero del modelo
 localizacion_modelo="./modelos/modelo_regresion_linear_boston.pkl"
 # dump guardar el modelo en fichero
-joblib.dump(lm,localizacion_modelo)
+dump(lm, localizacion_modelo)
 
 #recuperar el modelo guardado anteriormente
 # leemos de disco el fichero del modelo
-lm=joblib.load(localizacion_modelo)
-score=lm.score(X_test,Y_test)
-print("Score guardado:",score)
+lm = load(localizacion_modelo)
+score = lm.score(X_test, Y_test)
+print("Score guardado:", score)
 
 
 

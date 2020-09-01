@@ -27,7 +27,7 @@ x_train, x_test, y_train, y_test = train_test_split(digits.data, digits.target, 
 
 from sklearn.linear_model import LogisticRegression
 # all parameters not specified are set to their defaults
-logisticRegr = LogisticRegression()
+logisticRegr = LogisticRegression(max_iter=10000)
 
 
 logisticRegr.fit(x_train, y_train)

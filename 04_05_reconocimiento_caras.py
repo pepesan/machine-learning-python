@@ -22,7 +22,7 @@ print("There are {} images in the dataset".format(len(data)))
 print("There are {} unique targets in the dataset".format(len(np.unique(target))))
 print("Size of each image is {}x{}".format(data.shape[1],data.shape[2]))
 print("Pixel values were scaled to [0,1] interval. e.g:{}".format(data[0][0,:4]))
-print("unique target number : ",np.unique(target))
+print("unique target number : ", np.unique(target))
 
 
 def show_40_distinct_people(images, unique_ids):

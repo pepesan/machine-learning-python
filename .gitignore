@@ -4,3 +4,5 @@ venv
 modelos
 figures/scatter_iris.png
 logs
+figures/arbol.dot
+figures/tree*

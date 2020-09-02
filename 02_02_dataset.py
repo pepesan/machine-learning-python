@@ -12,7 +12,7 @@ dataset = pd.read_csv(url, names=names)
 print(dataset.shape)
 
 #carga desde local
-dataset=pd.read_csv("./csv/iris.data.csv",names=names)
+dataset = pd.read_csv("./csv/iris.data.csv", names=names)
 
 print(dataset.shape)
 

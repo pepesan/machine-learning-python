@@ -34,14 +34,14 @@ print(boston.target[:5])
 
 #Los colocamos dentro del dataframe
 # Aquí disponemos de los precios para cada casa del dataset
-bos['PRICE']=boston.target
+bos['PRICE'] = boston.target
 
 #Para generar X quitamos la columna del precio
-X= bos.drop("PRICE",axis=1)
-Y=bos['PRICE']
+X = bos.drop("PRICE",axis=1)
+Y = bos['PRICE']
 
 #Creamos el modelo
-lm= LinearRegression()
+lm = LinearRegression()
 print(lm)
 
 #Creamos las muestras de entrenamiento y pruebas
@@ -65,14 +65,14 @@ print("Ytest" + str(Y_test.shape))
 #Entrenamos el Modelo, sólo usamos los datos de train
 # guardamos la datos de test y no los entrenamos con ellos
 # de esta manera nos aseguramos que el modelo no los sepa de antemano
-lm.fit(X_train,Y_train)
+lm.fit(X_train, Y_train)
 
 # calculamos la puntuación del modelo generado con los datos de prueba como
 # entrada, sabiendo lo que debería salir
-score=lm.score(X_test,Y_test)
+score = lm.score(X_test, Y_test)
 # Score Modelo: 0.7503116174489232 75% de acierto de margen de media
 # acierto es cuanto te acercas del precio real
-print("Score Modelo:",score)
+print("Score Modelo:", score)
 
 
 #Guardar el modelo para usarlo más adelante
@@ -87,10 +87,8 @@ lm = load(localizacion_modelo)
 score = lm.score(X_test, Y_test)
 print("Score guardado:", score)
 
-
-
-plt.scatter(lm.predict(X_train),lm.predict(X_train)- Y_train, c="b",s=40, alpha=0.5)
-plt.scatter(lm.predict(X_test),lm.predict(X_test)- Y_test, c="g",s=40,)
+plt.scatter(lm.predict(X_train), lm.predict(X_train) - Y_train, c="b", s=40, alpha=0.5)
+plt.scatter(lm.predict(X_test), lm.predict(X_test) - Y_test, c="g",s=40,)
 plt.hlines(y=0, xmax=50, xmin=0)
 plt.title("Diagrama de dispersión de entrenamiento (azul), y pruebas (verde)")
 plt.show()

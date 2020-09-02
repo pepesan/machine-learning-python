@@ -20,7 +20,7 @@ print(iris.target_names)
 print(iris.target)
 """
 #Dividimos los datos en entrenamiento y pruebas
-X_train, X_test, Y_train, Y_test=train_test_split(iris['data'],iris['target'],
+X_train, X_test, Y_train, Y_test = train_test_split(iris['data'],iris['target'],
                                                   train_size=0.80, test_size=0.20, random_state=2)
 """
 #Datos para entrenamiento
@@ -36,13 +36,13 @@ print(Y_test.shape)
 """
 #Establecemos las configuraciones del algoritmo
 #empezando por el número de vecinos
-knn=KNeighborsClassifier(n_neighbors=10, weights='distance')
+knn = KNeighborsClassifier(n_neighbors=10, weights='distance')
 
 #entrenamos al algoritmo con los datos (_train)
-knn.fit(X_train,Y_train)
+knn.fit(X_train, Y_train)
 
 #comprobamos la validez del algortimo
-score = knn.score(X_test,Y_test)
+score = knn.score(X_test, Y_test)
 print(score)
 
 #Ejemplo de flor con sus características
@@ -72,7 +72,7 @@ cmap_bold = ListedColormap(['#FF0000', '#00FF00', '#00AAFF'])
 
 # we create an instance of Neighbours Classifier and fit the data.
 clf = neighbors.KNeighborsClassifier(n_neighbors, weights='distance')
-#algorithm : {'auto', 'ball_tree', 'kd_tree', 'brute'}
+# algorithm : {'auto', 'ball_tree', 'kd_tree', 'brute'}
 clf.fit(X, y)
 
 # calculate min, max and limits
@@ -93,5 +93,5 @@ plt.pcolormesh(xx, yy, Z, cmap=cmap_light, shading='auto')
 plt.scatter(X[:, 0], X[:, 1], c=y, cmap=cmap_bold)
 plt.xlim(xx.min(), xx.max())
 plt.ylim(yy.min(), yy.max())
-plt.title("3-Class classification (k = %i)" % (n_neighbors))
+plt.title("3-Class classification (k = %i)" % n_neighbors)
 plt.show()

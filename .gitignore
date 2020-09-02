@@ -2,3 +2,5 @@
 venv
 *.html
 modelos
+figures/scatter_iris.png
+logs

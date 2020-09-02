@@ -40,6 +40,7 @@ plt.show()
 # scatter plot matrix
 scatter_matrix(dataset)
 plt.show()
+plt.savefig("./figures/scatter_iris.png")
 
 
 # Split-out validation dataset

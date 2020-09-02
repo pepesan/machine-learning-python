@@ -12,7 +12,7 @@ y = [6, 7, 2, 4, 5]
 p = figure(title="simple line example", x_axis_label='x', y_axis_label='y')
 
 # Añade una línea entre los puntos fijados
-p.line(x, y, legend="Temp.", line_width=2)
+p.line(x, y, legend_label="Temp.", line_width=2)
 
 # Muestra los resultados
 show(p)
@@ -52,12 +52,12 @@ p = figure(
 )
 
 # añade los renders
-p.line(x, x, legend="y=x")
-p.circle(x, x, legend="y=x", fill_color="white", size=8)
-p.line(x, y0, legend="y=x^2", line_width=3)
-p.line(x, y1, legend="y=10^x", line_color="red")
-p.circle(x, y1, legend="y=10^x", fill_color="red", line_color="red", size=6)
-p.line(x, y2, legend="y=10^x^2", line_color="orange", line_dash="4 4")
+p.line(x, x, legend_label="y=x")
+p.circle(x, x, legend_label="y=x", fill_color="white", size=8)
+p.line(x, y0, legend_label="y=x^2", line_width=3)
+p.line(x, y1, legend_label="y=10^x", line_color="red")
+p.circle(x, y1, legend_label="y=10^x", fill_color="red", line_color="red", size=6)
+p.line(x, y2, legend_label="y=10^x^2", line_color="orange", line_dash="4 4")
 
 # muestra los resultados
 show(p)

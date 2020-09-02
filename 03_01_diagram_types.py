@@ -120,16 +120,25 @@ ax.clabel()	Labeled contour plot
 names = ['preg', 'plas', 'pres', 'skin', 'test', 'mass', 'pedi', 'age', 'class']
 data = pd.read_csv('./csv/pima-indians-diabetes.data.csv', names=names)
 
-matplotlib.pyplot.style.use="default"
+matplotlib.pyplot.style.use = "default"
+
+
+#diagrama de dispersión
+print(data.shape)
+print(data.columns)
+print(data.drop("class", axis=1).shape)
+only_data = data.drop("class", axis=1)
+from pandas.plotting import scatter_matrix
+scatter_matrix(only_data, alpha=0.2, figsize=(6, 6), diagonal='kde')
+plt.show()
+
+scatter_matrix(data, alpha=0.2, figsize=(6, 6), diagonal='kde')
+plt.show()
+
 #Diagrama de caja
-data.boxplot()
+only_data.boxplot()
 plt.show()
 
 #Históriograma
-data.hist()
-plt.show()
-
-#diagrama de dispersión
-from pandas.plotting import scatter_matrix
-scatter_matrix(data, alpha=0.2, figsize=(6, 6), diagonal='kde')
+only_data.hist()
 plt.show()

@@ -7,7 +7,7 @@ import numpy as np
 import argparse
 import sys
 from sklearn import preprocessing
-from read_image import prepare_data,read_image_array,read_single_image
+from read_image import prepare_data, read_image_array, read_single_image
 
 
 def conv2d(x, W):

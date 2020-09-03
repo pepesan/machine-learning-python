@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import sklearn
 import mglearn
 from sklearn.datasets import load_breast_cancer
 from sklearn.preprocessing import MinMaxScaler

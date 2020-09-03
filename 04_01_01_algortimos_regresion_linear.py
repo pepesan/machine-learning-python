@@ -23,10 +23,10 @@ print(boston.data.shape)
 print(boston.DESCR)
 
 #creamos el dataframe
-bos=pd.DataFrame(boston.data)
+bos = pd.DataFrame(boston.data)
 print(bos.head())
 
-bos.columns=boston.feature_names
+bos.columns = boston.feature_names
 print(bos.head())
 
 #Aquí es donde están los precios
@@ -37,7 +37,7 @@ print(boston.target[:5])
 bos['PRICE'] = boston.target
 
 #Para generar X quitamos la columna del precio
-X = bos.drop("PRICE",axis=1)
+X = bos.drop("PRICE", axis=1)
 Y = bos['PRICE']
 
 #Creamos el modelo
@@ -49,8 +49,8 @@ print(lm)
 # en este caso dividimos un 25% (0.25) para pruebas con el parametro test_size
 # el parámetro random_state permite definir un número que da aleatoriedad
 # cuanta más aleatoriedad al dividir los datos mejor resultados normalmente
-X_train, X_test,Y_train,  Y_test = train_test_split(X,Y, test_size=0.25
-                                                    , random_state=3)
+X_train, X_test, Y_train,  Y_test = train_test_split(
+    X, Y, test_size=0.25, random_state=3)
 # características = datos iniciales medibles
 # target = precio real para dicha casa
 # train datos para entrenamiento

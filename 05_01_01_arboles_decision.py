@@ -12,7 +12,8 @@ import collections
 
 # carga del fichero CSV
 # balance_data = pd.read_csv('https://archive.ics.uci.edu/ml/machine-learning-databases/balance-scale/balance-scale.data',sep= ',', header= None)
-balance_data = pd.read_csv('./csv/balance-scale.data.csv', sep=',', header=None)
+balance_data = pd.read_csv(
+    './csv/balance-scale.data.csv', sep=',', header=None)
 
 # Explorando el dataset
 print("Dataset Lenght:: ", len(balance_data))
@@ -32,7 +33,8 @@ X = balance_data.values[:, 1:5]
 Y = balance_data.values[:, 0]
 
 # Dividimos en entrenamiento y pruebas
-X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size=0.3, random_state=100)
+X_train, X_test, y_train, y_test = train_test_split(
+    X, Y, test_size=0.3, random_state=100)
 
 # Entrenamos el algoritmo con gini
 

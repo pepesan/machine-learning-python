@@ -20,11 +20,11 @@ from tflearn.data_augmentation import ImageAugmentation
 import tensorflow as tf
 
 # Data loading and preprocessing
-from tflearn.datasets import cifar10
+from keras.datasets import cifar10
 (X, Y), (X_test, Y_test) = cifar10.load_data()
 X, Y = shuffle(X, Y)
-Y = to_categorical(Y,nb_classes=10)
-Y_test = to_categorical(Y_test,nb_classes=10)
+Y = to_categorical(Y, nb_classes=10)
+Y_test = to_categorical(Y_test, nb_classes=10)
 
 # Real-time data preprocessing
 img_prep = ImagePreprocessing()
@@ -54,7 +54,7 @@ network = regression(network, optimizer='adam',
 logs_path = 'logs/image2'
 # Train using classifier
 # tensorboard --logdir='logs/image2'
-model = tflearn.DNN(network, tensorboard_verbose=1,tensorboard_dir=logs_path)
+model = tflearn.DNN(network, tensorboard_verbose=1, tensorboard_dir=logs_path)
 model.fit(X, Y, n_epoch=50, shuffle=True, validation_set=(X_test, Y_test),
           show_metric=True, batch_size=5000, run_id='cifar10_cnn')
 score=model.evaluate(X_test,Y_test)

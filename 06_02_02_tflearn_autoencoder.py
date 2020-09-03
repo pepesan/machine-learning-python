@@ -34,11 +34,11 @@ net = tflearn.regression(decoder, optimizer='adam', learning_rate=0.001,
 
 logs_path = 'logs/autoencoder'
 # Train using classifier
-# tensorboard --logdir='logs/autoencoder'
+# tensorboard --logdir='./logs/autoencoder'
 # Training the auto encoder
-model = tflearn.DNN(net,  tensorboard_verbose=1,tensorboard_dir=logs_path)
+model = tflearn.DNN(net,  tensorboard_verbose=1, tensorboard_dir=logs_path)
 model.fit(X, X, n_epoch=20, validation_set=(testX, testX),
-          run_id="auto_encoder", batch_size=256)
+          run_id="auto_encoder", batch_size=100)
 
 # Encoding X[0] for test
 print("\nTest encoding of X[0]:")

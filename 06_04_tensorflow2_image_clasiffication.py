@@ -39,7 +39,7 @@ model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
               metrics=['accuracy'])
 tensorboard_callback = tf.keras.callbacks.TensorBoard(histogram_freq=1)
-history = model.fit(train_images, train_labels, epochs=10,
+history = model.fit(train_images, train_labels, epochs=100,
                     validation_data=(test_images, test_labels), callbacks=[tensorboard_callback])
 
 plt.plot(history.history['accuracy'], label='accuracy')

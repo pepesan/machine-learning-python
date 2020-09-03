@@ -40,9 +40,12 @@ net = tflearn.regression(net)
 logs_path = 'logs/basic'
 # tensorboard --logdir='logs/basic'
 # Define model
-model = tflearn.DNN(net, tensorboard_verbose=1, tensorboard_dir=logs_path)
+model = tflearn.DNN(
+    net, tensorboard_verbose=1, tensorboard_dir=logs_path)
 # Start training (apply gradient descent algorithm)
-model.fit(data, labels, n_epoch=1900, batch_size=1000, show_metric=True)
+model.fit(
+    data, labels, n_epoch=1900, batch_size=1000,
+    show_metric=True)
 
 # Let's create some data for DiCaprio and Winslet
 dicaprio = [3, 'Jack Dawson', 'male', 19, 0, 0, 'N/A', 5.0000]

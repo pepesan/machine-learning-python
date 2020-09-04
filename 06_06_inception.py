@@ -68,7 +68,8 @@ import sys
 
 # Internet URL for the tar-file with the Inception model.
 # Note that this might change in the future and will need to be updated.
-data_url = "http://download.tensorflow.org/models/image/imagenet/inception-2015-12-05.tgz"
+data_url = \
+    "http://download.tensorflow.org/models/image/imagenet/inception-2015-12-05.tgz"
 
 # Directory to store the downloaded data.
 data_dir = "inception/"

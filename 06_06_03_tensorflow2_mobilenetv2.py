@@ -32,7 +32,7 @@ predicted_class_name = imagenet_labels[predicted_class]
 _ = plt.title("Prediction: " + predicted_class_name.title())
 plt.show()
 data_root = tf.keras.utils.get_file(
-  'flower_photos','https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz',
+  'flower_photos', 'https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz',
    untar=True)
 
 image_generator = tf.keras.preprocessing.image.ImageDataGenerator(rescale=1/255)
@@ -51,7 +51,7 @@ print(predicted_class_names)
 plt.figure(figsize=(10,9))
 plt.subplots_adjust(hspace=0.5)
 for n in range(30):
-  plt.subplot(6,5,n+1)
+  plt.subplot(6, 5, n+1)
   plt.imshow(image_batch[n])
   plt.title(predicted_class_names[n])
   plt.axis('off')
@@ -102,7 +102,7 @@ print(log_dir)
 os.makedirs(log_dir, exist_ok=True)
 tensorboard_callback = tf.keras.callbacks.TensorBoard(histogram_freq=1, log_dir=log_dir)
 
-history = model.fit(image_data, epochs=2,
+history = model.fit(image_data, epochs=100,
                     steps_per_epoch=steps_per_epoch,
                     callbacks=[batch_stats_callback, tensorboard_callback])
 

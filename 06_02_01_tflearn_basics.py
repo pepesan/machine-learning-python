@@ -37,14 +37,20 @@ net = tflearn.fully_connected(net, 2, activation="relu")
 net = tflearn.fully_connected(net, 2, activation='softmax')
 net = tflearn.regression(net)
 
-logs_path = 'logs/basic'
-# tensorboard --logdir='logs/basic'
+import os
+import datetime
+
+log_dir = os.path.join('logs', 'fit', datetime.datetime.now().strftime('%Y%m%d-%H%M%S'))
+print(log_dir)
+
+os.makedirs(log_dir, exist_ok=True)
+# tensorboard --logdir='logs'
 # Define model
 model = tflearn.DNN(
-    net, tensorboard_verbose=1, tensorboard_dir=logs_path)
+    net, tensorboard_verbose=1, tensorboard_dir=log_dir)
 # Start training (apply gradient descent algorithm)
 model.fit(
-    data, labels, n_epoch=1900, batch_size=1000,
+    data, labels, n_epoch=200, batch_size=1000,
     show_metric=True)
 
 # Let's create some data for DiCaprio and Winslet

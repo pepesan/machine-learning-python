@@ -67,11 +67,20 @@ model.compile(
 
 steps_per_epoch = train_generator.samples // train_generator.batch_size
 validation_steps = valid_generator.samples // valid_generator.batch_size
+import os
+import datetime
+
+log_dir = os.path.join('logs', 'fit', datetime.datetime.now().strftime('%Y%m%d-%H%M%S'))
+print(log_dir)
+
+os.makedirs(log_dir, exist_ok=True)
+tensorboard_callback = tf.keras.callbacks.TensorBoard(histogram_freq=1, log_dir=log_dir)
 hist = model.fit(
     train_generator,
     epochs=5, steps_per_epoch=steps_per_epoch,
     validation_data=valid_generator,
-    validation_steps=validation_steps).history
+    validation_steps=validation_steps,
+    callbacks=[tensorboard_callback]).history
 plt.figure()
 plt.ylabel("Loss (training and validation)")
 plt.xlabel("Training Steps")

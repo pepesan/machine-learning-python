@@ -15,11 +15,15 @@ model = tf.keras.models.Sequential([
 model.compile(optimizer='adam',
               loss='sparse_categorical_crossentropy',
               metrics=['accuracy'])
+import os
 import datetime
-#log_dir = "./logs/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")+"/"
-log_dir = "./logs/"
-tensorboard_callback = tf.keras.callbacks.TensorBoard(histogram_freq=1)
 
-model.fit(x_train, y_train, epochs=5, callbacks=[tensorboard_callback])
+log_dir = os.path.join('logs', 'fit', datetime.datetime.now().strftime('%Y%m%d-%H%M%S'))
+print(log_dir)
+
+os.makedirs(log_dir, exist_ok=True)
+tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
+
+model.fit(x_train, y_train, validation_data=(x_test, y_test), epochs=5, callbacks=[tensorboard_callback])
 
 model.evaluate(x_test,  y_test, verbose=2)

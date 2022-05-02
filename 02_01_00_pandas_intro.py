@@ -28,7 +28,7 @@ df.to_csv(Location, index=False, header=False)
 print(df)
 #lectura de fichero
 df = pd.read_csv(Location, header=None)
-df = pd.read_csv(Location, names=['Names','Births'])
+df = pd.read_csv(Location, names=['Names', 'Births'])
 print("Datos del DataFrame, cargado desde CSV")
 print(df)
 

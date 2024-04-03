@@ -38,7 +38,7 @@ print(df)
 
 # Lets add a couple of columns
 df['test'] = 3
-df['col'] = df['Rev']
+df['col'] = df['Rev'] + 1
 print(df)
 
 

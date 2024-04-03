@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
 
 import os
-#importacion de pandas
+# importacion de pandas
 import pandas as pd
-
 
 # The inital set of baby names and bith rates
 names = ['Bob', 'Jessica', 'Mary', 'John', 'Mel']
 births = [968, 155, 77, 578, 973]
-#Dataset
-BabyDataSet = list(zip(names,births))
+# Dataset
+BabyDataSet = list(zip(names, births))
 print("DataSet")
 print(BabyDataSet)
 # [('Bob', 968), ('Jessica', 155), ('Mary', 77), ('John', 578), ('Mel', 973)]
@@ -22,13 +21,15 @@ print("DataFrame Describe")
 print(df.describe())
 print("DataFrame Describe Shape")
 print(df.describe().shape)
-#veremos las filas y las columnas del DataFrame
+# Volcamos el DataFrame a fichero
 Location = './csv/births1880.csv'
-df.to_csv(Location, index=False, header=False)
+df.to_csv(Location, index=False, header=True)
 print(df)
-#lectura de fichero
-df = pd.read_csv(Location, header=None)
-df = pd.read_csv(Location, names=['Names', 'Births'])
+# Lectura de fichero
+# df = pd.read_csv(Location, header=False)
+df = pd.read_csv(Location)
+# df = pd.read_csv(Location, names=['Names', 'Births'])
+# df = pd.read_csv(Location, names=['Nombres', 'Nacimientos'])
 print("Datos del DataFrame, cargado desde CSV")
 print(df)
 
@@ -40,20 +41,18 @@ print(Sorted.head(2))
 print("Imprime el valor máximo de nacimientos")
 print(df['Births'].max())
 
-
-
-
-#Carga de un Dataframe
+# Carga de un Dataframe
 s = pd.Series([1, 2, 3, 4])
 print("DataFrame")
 print(s)
 print("Shape")
 print(s.shape)
-#Función describe
+# Función describe
 print("Describe")
 print(s.describe())
 
-d = {'col1': [1, 2], 'col2': [3, 4]}
+print("Carga de diccionario")
+d = {'col1': [1, 2], 'col2': [3, 4], 'col3': [5, 6]}
 df = pd.DataFrame(data=d)
 print("DataFrame")
 print(df)
@@ -61,11 +60,11 @@ print(df.shape)
 print("Describe")
 print(df.describe())
 
-
-#Cómo cargar un DataFrame desde un Bunch de datos de sklearn
+# Cómo cargar un DataFrame desde un Bunch de datos de sklearn
 import numpy as np
 from sklearn.datasets import load_iris
 
+print("iris")
 # save load_iris() sklearn dataset to iris
 # if you'd like to check dataset type use: type(load_iris())
 # if you'd like to view list of attributes use: dir(load_iris())
@@ -77,8 +76,12 @@ print(type(iris.data))
 # for pandas column argument: concat iris['feature_names'] list
 # and string list (in this case one string); you can make this anything you'd like..
 # the original dataset would probably call this ['Species']
-data1 = pd.DataFrame(data= np.c_[iris['data'], iris['target']],
-                     columns= iris['feature_names'] + ['target'])
+data1 = pd.DataFrame(data=np.c_[iris['data'], iris['target']],
+                     columns=iris['feature_names'] + ['target'])
 
 print(type(data1))
+print(iris['feature_names'])
+print(iris['target'])
+print(iris['target'].shape)
 print(data1)
+

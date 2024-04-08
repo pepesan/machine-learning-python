@@ -7,13 +7,21 @@ from sklearn.metrics import mean_squared_error
 # Cargar el conjunto de datos de diabetes
 diabetes = load_diabetes()
 X = diabetes.data
-y = diabetes.target
+print(X)
+Y = diabetes.target
+print(Y)
 
 # Dividir los datos en conjuntos de entrenamiento y prueba
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(
+    X,
+    Y,
+    test_size=0.2,
+    random_state=42)
 
 # Inicializar y entrenar el modelo de regresión lineal
+# Elegir el modelo adecuado para el problema a resolver
 model = LinearRegression()
+# Realizar el entrenamiento con los datos de entrenamiento
 model.fit(X_train, y_train)
 
 # Predecir los valores de la variable dependiente en el conjunto de prueba

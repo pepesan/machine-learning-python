@@ -7,3 +7,5 @@ scikit-learn==1.4.0
 holoviews==1.18.3
 bokeh==3.3.4
 seaborn==0.13.2
+mglearn==0.2.0
+funcsigs==1.0.2

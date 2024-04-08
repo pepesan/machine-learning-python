@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import pickle
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
@@ -20,8 +21,12 @@ print(iris.target_names)
 print(iris.target)
 """
 #Dividimos los datos en entrenamiento y pruebas
-X_train, X_test, Y_train, Y_test = train_test_split(iris['data'],iris['target'],
-                                                  train_size=0.80, test_size=0.20, random_state=2)
+X_train, X_test, Y_train, Y_test = (train_test_split(
+    iris['data'],
+    iris['target'],
+    train_size=0.80,
+    test_size=0.20,
+    random_state=2))
 """
 #Datos para entrenamiento
 #Forma X_train
@@ -36,7 +41,9 @@ print(Y_test.shape)
 """
 #Establecemos las configuraciones del algoritmo
 #empezando por el número de vecinos
-knn = KNeighborsClassifier(n_neighbors=10, weights='distance')
+knn = KNeighborsClassifier(
+    n_neighbors=10,
+    weights='distance')
 
 #entrenamos al algoritmo con los datos (_train)
 knn.fit(X_train, Y_train)
@@ -45,10 +52,19 @@ knn.fit(X_train, Y_train)
 score = knn.score(X_test, Y_test)
 print(score)
 
-#Ejemplo de flor con sus características
-ret = knn.predict([[1.2, 3.4, 5.6, 1.1]])
-#Predicción de tipo de flor
-print(iris.target_names[ret])
+# save model
+# guardar a fichero (carpeta) el model para su posterior uso
+with open("modelo_knn.pkl", "wb") as archivo:
+    pickle.dump(knn, archivo)
+# load model
+# cargar el modelo desde fichero para poder hacer inferencia
+with open("modelo_knn.pkl", "rb") as archivo:
+    modelo_knn_cargado = pickle.load(archivo)
+    #Ejemplo de flor con sus características
+    # Inferencia
+    ret = modelo_knn_cargado.predict([[1.2, 3.4, 5.6, 1.1]])
+    #Predicción de tipo de flor
+    print(iris.target_names[ret])
 
 
 import numpy as np

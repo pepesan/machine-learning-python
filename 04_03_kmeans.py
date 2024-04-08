@@ -13,7 +13,10 @@ Y = iris.target
 # hay que jugar con este valor para encontrar el ideal
 # max_iter define el número de veces que ejecuta el algoritmo
 km = KMeans(n_clusters=3, max_iter=10000)
-
+# Entrenar el modelo
+## Sólo usamos los datos (x) no los target (y)
+## Estamos en un caso de aprendizaje no supervisado
+## No disponemos de la categorías/target
 km.fit(X)
 
 predicciones = km.predict(X)

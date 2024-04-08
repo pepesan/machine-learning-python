@@ -22,7 +22,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 ## Probamos entre todos los modelos para ver el que mejor funciona
 ### Colocar los hiperparámetros para jugar con ellos
 ### Hasta obtener el mejor resultado posible de todas las combinaciones de HP
-model = LogisticRegression(max_iter=50)
+model = LogisticRegression(max_iter=200)
 ## Entrenamiento
 model.fit(X_train, y_train)
 

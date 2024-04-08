@@ -9,3 +9,4 @@ bokeh==3.3.4
 seaborn==0.13.2
 mglearn==0.2.0
 funcsigs==1.0.2
+pydotplus==2.0.2

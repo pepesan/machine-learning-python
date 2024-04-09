@@ -63,7 +63,7 @@ features = np.array(features)
 
 # Obtengo las características y etiquetas de entrenamiento y pruebas
 train_features, test_features, train_labels, test_labels = \
-    train_test_split(features, labels, test_size=0.25, random_state=42)
+    train_test_split(features, labels, test_size=0.3, random_state=42)
 
 print('Training Features Shape:', train_features.shape)
 print('Training Labels Shape:', train_labels.shape)
@@ -79,7 +79,7 @@ baseline_errors = abs(baseline_preds - test_labels)
 print('Margen de error medio en grados: ', round(np.mean(baseline_errors), 2))
 
 # Instantiate model with 1000 decision trees
-rf = RandomForestRegressor(n_estimators=1000, max_depth=3, random_state=42)
+rf = RandomForestRegressor(n_estimators=100, max_depth=3, random_state=42)
 # Train the model on training data
 rf.fit(train_features, train_labels)
 

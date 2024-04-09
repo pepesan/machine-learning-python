@@ -39,13 +39,13 @@ X_train, X_test, y_train, y_test = train_test_split(
 # Entrenamos el algoritmo con gini
 
 clf_gini = DecisionTreeClassifier(criterion="gini", random_state=100,
-                                  max_depth=3, min_samples_leaf=5)
+                                  max_depth=5, min_samples_leaf=5)
 clf_gini.fit(X_train, y_train)
 print(clf_gini)
 
 # Entrenamos el algoritmo con entropy
 clf_entropy = DecisionTreeClassifier(criterion="entropy", random_state=100,
-                                     max_depth=3, min_samples_leaf=5)
+                                     max_depth=7, min_samples_leaf=5)
 clf_entropy.fit(X_train, y_train)
 
 # Predecimos con gini
@@ -87,5 +87,5 @@ def genera_png(tree, feature_names, filepath):
 
 
 # Values son las posibilidades de que se de cada clase (etiqueta)
-genera_png(clf_gini, feature_names, './figures/tree.png')
-genera_png(clf_entropy, feature_names, './figures/tree2.png')
+genera_png(clf_gini, feature_names, './figures/tree_gini.png')
+genera_png(clf_entropy, feature_names, './figures/tree_entropy.png')

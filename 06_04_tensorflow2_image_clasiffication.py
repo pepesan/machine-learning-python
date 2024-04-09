@@ -50,6 +50,7 @@ os.makedirs(log_dir, exist_ok=True)
 
 tensorboard_callback = tf.keras.callbacks.TensorBoard(histogram_freq=1, log_dir=log_dir)
 # tensorboard_callback = tf.keras.callbacks.TensorBoard(histogram_freq=1)
+# comando: tensorboard --logdir=logs/fit/
 history = model.fit(train_images, train_labels, epochs=100, batch_size=1000,
                     validation_data=(test_images, test_labels), callbacks=[tensorboard_callback])
 

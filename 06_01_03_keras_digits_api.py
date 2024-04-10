@@ -9,10 +9,13 @@ from sklearn.model_selection import train_test_split
 model = Sequential()
 # 64 entradas
 model.add(Flatten(input_shape=(64,)))
-model.add(Dense(128, activation='relu'))
+model.add(Dense(32, activation='relu'))
 model.add(Dense(10, activation='softmax'))
 
-model.compile(loss='sparse_categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
+model.compile(
+    loss='sparse_categorical_crossentropy',
+    optimizer='adam',
+    metrics=['accuracy'])
 
 # (**For your API application**)
 

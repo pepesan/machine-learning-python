@@ -3,12 +3,13 @@ pandas==2.2.1
 numpy==1.26.4
 matplotlib==3.8.3
 mongoengine==0.28.2
-scikit-learn==1.4.0
+scikit-learn==1.4.2
 holoviews==1.18.3
 bokeh==3.3.4
 seaborn==0.13.2
 mglearn==0.2.0
 funcsigs==1.0.2
 pydotplus==2.0.2
-tflearn==0.5.0
-tensorflow==2.16.1
+flask==3.0.3
+flask-openapi3==3.1.0
+pydantic==2.6.4

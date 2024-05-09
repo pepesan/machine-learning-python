@@ -27,7 +27,7 @@ df.to_csv(Location, index=False, header=True)
 print(df)
 # Lectura de fichero
 # df = pd.read_csv(Location, header=False)
-df = pd.read_csv(Location)
+x = pd.read_csv(Location)
 # df = pd.read_csv(Location, names=['Names', 'Births'])
 # df = pd.read_csv(Location, names=['Nombres', 'Nacimientos'])
 print("Datos del DataFrame, cargado desde CSV")
@@ -71,6 +71,7 @@ print("iris")
 iris = load_iris()
 print(type(iris))
 print(type(iris.data))
+print(type(iris.target))
 # np.c_ is the numpy concatenate function
 # which is used to concat iris['data'] and iris['target'] arrays
 # for pandas column argument: concat iris['feature_names'] list

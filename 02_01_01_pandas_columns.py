@@ -43,7 +43,7 @@ print(df)
 
 
 # If we wanted, we could change the name of the index
-i = ['a','b','c','d','e','f','g','h','i','j']
+i = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
 df.index = i
 print(df)
 

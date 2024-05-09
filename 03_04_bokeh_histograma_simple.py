@@ -1,54 +1,28 @@
-import pandas as pd
-from bokeh.plotting import figure, output_file, show
+import numpy as np
 
-# Cargamos los datos (assuming "datos.csv" exists)
-datos = pd.read_csv("csv/histograma.csv")
+from bokeh.plotting import figure, show
 
-# Seleccionamos la columna que queremos representar
-columna = datos["Columna"]
+rng = np.random.default_rng()
+x = rng.normal(loc=0, scale=1, size=1000)
 
-# Definimos el rango de valores para el histograma
-rango_min = min(columna)
-rango_max = max(columna)
+p = figure(width=670, height=400, toolbar_location=None,
+           title="Normal (Gaussian) Distribution")
 
-# Creamos el histograma (using either 'width' or 'outer_width')
-histograma = figure(title="Histograma de " + columna.name,
-                    x_axis_label=columna.name,
-                    y_axis_label="Frecuencia",
-                    # Use 'width' if your Bokeh version supports it
-                    width=500,  # Adjust width as desired
-                    # Otherwise, use 'outer_width' for older versions
-                    # outer_width=500
-                    )
+# Histogram
+bins = np.linspace(-3, 3, 40)
+hist, edges = np.histogram(x, density=True, bins=bins)
+p.quad(top=hist, bottom=0, left=edges[:-1], right=edges[1:],
+         fill_color="skyblue", line_color="white",
+         legend_label="1000 random samples")
 
-# Añadimos los datos al histograma
-histograma.quad(top=columna.value_counts(),
-                bottom=0,
-                left=rango_min,
-                right=rango_max,
-                fill_color="navy",
-                line_color="white")
+# Probability density function
+x = np.linspace(-3.0, 3.0, 100)
+pdf = np.exp(-0.5*x**2) / np.sqrt(2.0*np.pi)
+p.line(x, pdf, line_width=2, line_color="navy",
+       legend_label="Probability Density Function")
 
-# Mostramos el histograma
-output_file("histograma.html")
-show(histograma)
+p.y_range.start = 0
+p.xaxis.axis_label = "x"
+p.yaxis.axis_label = "PDF(x)"
 
-#
-# # Creamos el histograma
-# histograma = figure(title="Histograma de " + columna.name,
-#                     x_axis_label=columna.name,
-#                     y_axis_label="Frecuencia",
-#                     plot_width=500,
-#                     plot_height=300)
-#
-# # Añadimos los datos al histograma
-# histograma.quad(top=columna.value_counts(),
-#                 bottom=0,
-#                 left=rango_min,
-#                 right=rango_max,
-#                 fill_color="navy",
-#                 line_color="white")
-#
-# # Mostramos el histograma
-# output_file("histograma.html")
-# show(histograma)
+show(p)

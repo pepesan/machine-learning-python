@@ -6,6 +6,7 @@ mongoengine==0.28.2
 scikit-learn==1.4.2
 holoviews==1.18.3
 bokeh==3.4.0
+ipython==8.20.0
 seaborn==0.12.2
 mglearn==0.2.0
 funcsigs==1.0.2

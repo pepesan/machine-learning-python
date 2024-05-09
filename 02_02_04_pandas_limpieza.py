@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 
 df = pd.read_csv("csv/limpia.csv")
 print(df)
@@ -33,3 +34,12 @@ print('tipos de columnas')
 df['col1'] = df['col1'].astype("int")
 print(df['col1'].dtype)
 print(df['col2'].dtype)
+
+
+# Create a DataFrame with NaN values
+data = {'A': [1, 2, np.nan, 4, 5]}
+df = pd.DataFrame(data)
+
+# Replace NaN with the mean of 'A'
+df['A'] = df['A'].fillna(df['A'].mean())
+print(df)

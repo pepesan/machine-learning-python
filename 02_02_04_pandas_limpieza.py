@@ -6,6 +6,7 @@ print(df)
 
 print(df.head())
 print(df.info())
+print(df.shape)
 
 datos = df.drop_duplicates()
 print('quita duplicados')

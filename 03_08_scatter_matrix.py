@@ -49,7 +49,7 @@ for i, (y, x) in enumerate(product(ATTRS, reversed(ATTRS))):
         xticker = BasicTicker()
     p.add_layout(Grid(dimension=0, ticker=xticker))
 
-    circle = Circle(x=x, y=y, fill_alpha=0.6, radius=5, line_color=None,
+    circle = Circle(x=x, y=y, fill_alpha=0.6, radius=0.1, line_color=None,
                     fill_color=factor_cmap('species', 'Category10_3', SPECIES))
     r = p.add_glyph(source, circle)
     p.x_range.renderers.append(r)

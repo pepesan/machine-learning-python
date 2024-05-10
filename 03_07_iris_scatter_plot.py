@@ -15,6 +15,7 @@ datos = {'sepal_length': X[:, 0], 'sepal_width': X[:, 1], 'petal_length': X[:, 2
 source = ColumnDataSource(data=datos)
 # Mapeo de colores por clase
 colores = ["red", "green", "blue"]  # Example color list
+print(iris.target_names)
 mapper = factor_cmap('clase', palette=colores, factors=iris.target_names)
 # Crear figura de Bokeh
 p = figure(
@@ -25,7 +26,7 @@ p = figure(
 )
 
 # Diagrama de dispersión
-p.circle(
+p.scatter(
     x='sepal_length',
     y='sepal_width',
     size=10,

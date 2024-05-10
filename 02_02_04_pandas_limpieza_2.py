@@ -27,10 +27,12 @@ df['Identifier'].is_unique
 #df = df.set_index('Identifier')
 # devuelve sobre el mismo df
 df.set_index('Identifier', inplace=True)
-
+print("indexed")
+print(df)
 # convertir a números una columna
 extr = df['Date of Publication'].str.extract(r'^(\d{4})', expand=False)
 df['Date of Publication'] = pd.to_numeric(extr)
+print("mascara")
 print(df['Date of Publication'].dtype)
 
 

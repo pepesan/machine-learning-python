@@ -7,6 +7,8 @@ print(df.shape)
 columnas_a_transformar = ['columna1', 'columna2']  # Specify columns if needed
 df.columns = columnas_a_transformar
 
+#def milambda(x):
+#    return x-1
 df2 = df.map(lambda x: x-1)
 print(df2)
 print(df2.shape)
@@ -23,7 +25,10 @@ def resta_uno(x):  # Define a named function for clarity
         return x - 1
 
 
-df4 = df[columnas_a_transformar].map(resta_uno)  # Use map for element-wise operations
+## Primero filtra
+df4 = (df['columna1']
+       # realiza la transformación
+       .map(resta_uno))  # Use map for element-wise operations
 # If unnecessary to specify columns, use: df = df.map(resta_uno)
 
 print(df4)

@@ -14,6 +14,7 @@ d = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 # Create dataframe
 df = pd.DataFrame(d)
 print(df)
+print(df.shape)
 
 
 # Lets change the name of the column
@@ -30,9 +31,13 @@ print(df)
 df['NewCol'] = df['NewCol'] + 1
 print(df)
 
+# Lets modify our new column
+df['NewCol2'] = df['NewCol'] + 1
+print(df)
 
-# We can delete columns
-del df['NewCol']
+
+# We can delete column
+del df['NewCol2']
 print(df)
 
 

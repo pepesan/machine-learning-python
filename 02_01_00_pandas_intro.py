@@ -3,8 +3,9 @@
 import os
 # importacion de pandas
 import pandas as pd
+from joblib import PrintTime
 
-# The inital set of baby names and bith rates
+# The initial set of baby names and bith rates
 names = ['Bob', 'Jessica', 'Mary', 'John', 'Mel']
 births = [968, 155, 77, 578, 973]
 # Dataset
@@ -32,12 +33,22 @@ x = pd.read_csv(Location)
 # df = pd.read_csv(Location, names=['Nombres', 'Nacimientos'])
 print("Datos del DataFrame, cargado desde CSV")
 print(df)
+print("Primeras posiciones")
+print(df.head())
+print("Últimas posiciones")
+print(df.tail())
 
-Sorted = df.sort_values(['Births'], ascending=False)
+Sorted = df.sort_values(by=['Births'], ascending=False)
 print("Imprime la primera fila ordenada por nacimientos")
 print(Sorted)
 print(Sorted.head(2))
+print(Sorted.tail(2))
 
+# Selección de una columna del DF
+print("Selección de columna")
+print(df['Births'])
+print("Shape de seleccion")
+print(df['Births'].shape)
 print("Imprime el valor máximo de nacimientos")
 print(df['Births'].max())
 
@@ -77,6 +88,12 @@ print(type(iris.target))
 # for pandas column argument: concat iris['feature_names'] list
 # and string list (in this case one string); you can make this anything you'd like..
 # the original dataset would probably call this ['Species']
+print("iris['data']")
+print(type(iris['data']))
+print("iris['target']")
+print(type(iris['target']))
+print("iris['feature_names']")
+print(iris['feature_names'])
 data1 = pd.DataFrame(data=np.c_[iris['data'], iris['target']],
                      columns=iris['feature_names'] + ['target'])
 

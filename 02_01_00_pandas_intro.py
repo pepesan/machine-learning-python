@@ -13,6 +13,9 @@ BabyDataSet = list(zip(names, births))
 print("DataSet")
 print(BabyDataSet)
 # [('Bob', 968), ('Jessica', 155), ('Mary', 77), ('John', 578), ('Mel', 973)]
+df = pd.DataFrame(data=BabyDataSet)
+print("DataFrame Sin columnas")
+print(df)
 df = pd.DataFrame(data=BabyDataSet, columns=['Names', 'Births'])
 print("DataFrame")
 print(df)
@@ -24,7 +27,7 @@ print("DataFrame Describe Shape")
 print(df.describe().shape)
 # Volcamos el DataFrame a fichero
 Location = './csv/births1880.csv'
-df.to_csv(Location, index=False, header=True)
+df.to_csv(Location, index=False, header=True, sep=";")
 print(df)
 # Lectura de fichero
 # df = pd.read_csv(Location, header=False)

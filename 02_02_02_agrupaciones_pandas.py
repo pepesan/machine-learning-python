@@ -36,6 +36,6 @@ print(letterone)
 
 
 df = pd.DataFrame({'A': [1, 2, 3, 4, 5], 'B': [6, 7, 8, 9, 10], 'C': ['a', 'b', 'c', 'a', 'b']})
-
+print(df)
 # Agrupar por 'C' y calcular la suma de 'A' y 'B'
 print(df.groupby('C').agg(sum_A=('A', 'sum'), sum_B=('B', 'sum')))

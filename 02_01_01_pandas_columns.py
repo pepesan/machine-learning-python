@@ -31,7 +31,7 @@ print(df)
 df['NewCol'] = df['NewCol'] + 1
 print(df)
 
-# Lets modify our new column
+# Lets add a new column with column data
 df['NewCol2'] = df['NewCol'] + 1
 print(df)
 

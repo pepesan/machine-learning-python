@@ -11,10 +11,15 @@ with open(fichero) as csv_file:
     csv_reader = csv.reader(csv_file, delimiter=';')
     line_count = 0
     print("Leyendo fichero...")
+    # listado de personas
+    personas = []
     for row in csv_reader:
         print(row)
         print(row[0])
         print(row[1])
         print(row[2])
         obj = Persona(row[0], row[1], row[2])
+        personas.append(obj)
         print(obj)
+
+    print(personas)

@@ -31,7 +31,7 @@ df.to_csv(Location, index=False, header=True, sep=";")
 print(df)
 # Lectura de fichero
 # df = pd.read_csv(Location, header=False)
-x = pd.read_csv(Location)
+df = pd.read_csv(Location, sep=";")
 # df = pd.read_csv(Location, names=['Names', 'Births'])
 # df = pd.read_csv(Location, names=['Nombres', 'Nacimientos'])
 print("Datos del DataFrame, cargado desde CSV")
@@ -40,7 +40,27 @@ print("Primeras posiciones")
 print(df.head())
 print("Últimas posiciones")
 print(df.tail())
+print("Forma: filas x columnas")
+print(df.shape)
+print("info()")
+print(df.info())
 
+
+
+# Carga de Fichero XLS
+print("XLS")
+df_excel = pd.read_excel('csv/titanic3.xls')
+print(df_excel.head())
+# Escribir el DataFrame en un archivo Excel
+# !pip install openpyxl
+df_excel.to_excel('csv/salida.xlsx', index=False)
+
+# Carga de Fichero JSON
+print("JSON")
+df_json = pd.read_json('csv/fichero.json')
+df.to_json('csv/salida.json', orient='records', indent=4)
+# Ordenación
+print("Ordenacion")
 Sorted = df.sort_values(by=['Births'], ascending=False)
 print("Imprime la primera fila ordenada por nacimientos")
 print(Sorted)

@@ -8,6 +8,24 @@ print('Python version ' + sys.version)
 print('Pandas version: ' + pd.__version__)
 
 
+
+# The initial set of baby names and bith rates
+names = ['Bob', 'Jessica', 'Mary', 'John', 'Mel']
+births = [968, 155, 77, 578, 973]
+# Dataset
+BabyDataSet = list(zip(names, births))
+print("DataSet")
+print(BabyDataSet)
+# [('Bob', 968), ('Jessica', 155), ('Mary', 77), ('John', 578), ('Mel', 973)]
+names= ['names', 'births']
+df = pd.DataFrame(data=BabyDataSet, columns=names)
+print(df)
+df.columns = names
+print(df['names'])
+print(df['births'])
+## acceso a varias columnas
+print(df[['names','births'] ])
+
 # Our small data set
 d = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -21,7 +39,8 @@ print(df.shape)
 df.columns = ['Rev']
 print(df)
 
-
+## accessing column
+print(df['Rev'])
 # Lets add a column
 df['NewCol'] = 5
 print(df)
@@ -95,3 +114,32 @@ print(df.head())
 
 # Select bottom N number of records (default = 5)
 print(df.tail())
+
+
+# Crear un DataFrame de ejemplo
+data = {
+    'ID': [101, 102, 103, 104, 105],
+    'Nombre': ['Ana', 'Luis', 'Carlos', 'María', 'Jorge'],
+    'Edad': [23, 34, 45, 29, 40],
+    'Ciudad': ['Madrid', 'Barcelona', 'Valencia', 'Sevilla', 'Bilbao']
+}
+# Cargar los datos en un DataFrame
+df = pd.DataFrame(data)
+# Establecer la columna 'ID' como índice
+df.set_index('ID', inplace=True)
+
+# Mostrar el DataFrame
+print("DataFrame cargado con índice 'ID':")
+print(df)
+
+# Seleccionar una fila específica y una columna específica
+print("\nFila con ID 102 y columna 'Nombre':")
+print(df.loc[102, 'Nombre'])  # Devuelve 'Luis'
+
+# Seleccionar múltiples filas y columnas específicas
+print("\nFilas con ID 102 y 104, columnas 'Nombre' y 'Edad':")
+print(df.loc[[102, 104], ['Nombre', 'Edad']])
+
+# Seleccionar múltiples filas y columnas específicas
+print("\nFilas entre ID 102 y 104, columnas 'Nombre' y 'Edad':")
+print(df.loc[102: 104, ['Nombre', 'Edad']])

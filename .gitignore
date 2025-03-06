@@ -7,3 +7,6 @@ logs
 figures/arbol.dot
 figures/tree*
 mnist
+
+csv/births1880.csv
+csv/salida*

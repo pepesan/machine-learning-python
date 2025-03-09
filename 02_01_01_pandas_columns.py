@@ -259,3 +259,76 @@ nuevo_orden = ['Nombre', 'Ubicación', 'Años', 'Nota']
 df = df[nuevo_orden]
 print("### Reordenar columnas en un orden específico ###")
 print(df, "\n")
+
+# Definir una función para clasificar edades
+def clasificar_edad(edad):
+    if edad < 30:
+        return "Joven"
+    elif 30 <= edad < 50:
+        return "Adulto"
+    else:
+        return "Mayor"
+
+# Aplicar la función a la columna 'Edad'
+df['Clasificación Edad'] = df['Años'].apply(clasificar_edad)
+
+print("### Clasificación de edades ###")
+print(df, "\n")
+
+
+# Mapear valores en la columna 'Ciudad' con nombres abreviados
+df['Ciudad Abreviado'] = df['Ubicación'].map({'Barcelona': 'BAR', 'Valencia': 'VAL', 'Sevilla': 'SEV', 'Bilbao': 'BIL'})
+
+print("### Abreviar nombres de ciudades ###")
+print(df, "\n")
+
+# Normalizar la edad entre 0 y 1
+df['Edad Normalizada'] = (df['Años'] - df['Años'].min()) / (df['Años'].max() - df['Años'].min())
+
+print("### Normalización de edades (Min-Max Scaling) ###")
+print(df, "\n")
+
+
+# Estandarizar la edad (media 0, desviación estándar 1)
+df['Edad Z-Score'] = (df['Años'] - df['Años'].mean()) / df['Años'].std()
+
+print("### Estandarización de edades (Z-score Normalization) ###")
+print(df, "\n")
+
+# Calcular la década de cada persona
+df['Década de Nacimiento'] = (2024 - df['Años']) // 10 * 10
+
+print("### Década de nacimiento de cada persona ###")
+print(df, "\n")
+
+# Agregar una columna con nombres y apellidos ficticios
+df['Nombre Completo'] = ["Ana López", "Luis García", "Carlos Pérez", "María González", "Jorge Rodríguez"]
+
+# Separar en 'Nombre' y 'Apellido'
+df[['Nombre', 'Apellido']] = df['Nombre Completo'].str.split(' ', expand=True)
+
+print("### División de nombres completos en 'Nombre' y 'Apellido' ###")
+print(df, "\n")
+
+
+# Concatenar 'Nombre' y 'Ciudad' en una sola columna
+df['Descripción'] = df['Nombre'] + ' vive en ' + df['Ubicación']
+
+print("### Concatenación de columnas en 'Descripción' ###")
+print(df[['Nombre', 'Ubicación', 'Descripción']], "\n")
+
+df_transpuesto = df.T  # Transponer el DataFrame
+
+print("### DataFrame Transpuesto ###")
+print(df_transpuesto, "\n")
+
+# Función para describir cada persona en una fila
+def describir_persona(fila):
+    return f"{fila['Nombre']} tiene {fila['Años']} años y vive en {fila['Ubicación']}."
+
+df['Descripción Completa'] = df.apply(describir_persona, axis=1)
+
+print("### Crear descripciones personalizadas para cada persona ###")
+print(df[['Nombre', 'Ubicación', 'Descripción Completa']], "\n")
+
+

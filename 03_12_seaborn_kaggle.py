@@ -1,15 +1,15 @@
 # !pip install seaborn kagglehub
-import seaborn as sns
-import matplotlib.pyplot as plt
 # dataset de ejemplo
 # https://www.kaggle.com/datasets/rohankayan/years-of-experience-and-salary-dataset
 import kagglehub
-
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
 # Download latest version
 path = kagglehub.dataset_download("rohankayan/years-of-experience-and-salary-dataset")
 complete_path = path + "/Salary_Data.csv"
 print("Path to dataset files:", complete_path)
-import pandas as pd
+
 
 df = pd.read_csv(complete_path)
 # Mostrar las primeras filas del dataset
@@ -28,8 +28,6 @@ print(df.head())
 # Información general del dataset
 print(df.info())
 
-import seaborn as sns
-import matplotlib.pyplot as plt
 
 # Gráfico de dispersión
 sns.relplot(x='YearsExperience', y='Salary', data=df, kind='scatter')

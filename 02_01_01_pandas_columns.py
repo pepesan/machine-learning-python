@@ -214,3 +214,48 @@ df['Puntuación'] = np.random.randint(1, 101, df.shape[0])  # Números entre 1 y
 print("### Nueva columna 'Puntuación' con valores aleatorios ###")
 print(df, "\n")
 
+# Modificar todas las edades sumando 1
+df['Edad'] = df['Edad'] + 1
+print("### Edades aumentadas en 1 año ###")
+print(df, "\n")
+
+# Modificar la columna 'Ciudad' cambiando "Madrid" por "Barcelona"
+df['Ciudad'] = df['Ciudad'].replace('Madrid', 'Barcelona')
+print("### Cambiar 'Madrid' por 'Barcelona' en la columna 'Ciudad' ###")
+print(df, "\n")
+
+# Convertir la columna 'Nombre' a mayúsculas
+df['Nombre'] = df['Nombre'].str.upper()
+print("### Convertir la columna 'Nombre' a mayúsculas ###")
+print(df, "\n")
+
+# Redondear la columna 'Puntuación' a la decena más cercana
+df['Puntuación'] = (df['Puntuación'] // 10) * 10
+print("### Redondear 'Puntuación' a la decena más cercana ###")
+print(df, "\n")
+
+# Renombrar una columna específica
+df.rename(columns={'Puntuación': 'Nota'}, inplace=True)
+print("### Renombrar 'Puntuación' a 'Nota' ###")
+print(df, "\n")
+
+# Renombrar varias columnas a la vez
+df.rename(columns={'Edad': 'Años', 'Ciudad': 'Ubicación'}, inplace=True)
+print("### Renombrar múltiples columnas ###")
+print(df, "\n")
+
+# Eliminar una columna
+df.drop(columns=['País'], inplace=True)
+print("### Eliminar la columna 'País' ###")
+print(df, "\n")
+
+# Eliminar varias columnas a la vez
+df.drop(columns=['Mayor de Edad', 'Edad en 10 años'], inplace=True)
+print("### Eliminar las columnas 'Mayor de Edad' y 'Edad en 10 años' ###")
+print(df, "\n")
+
+# Reordenar columnas en un orden específico
+nuevo_orden = ['Nombre', 'Ubicación', 'Años', 'Nota']
+df = df[nuevo_orden]
+print("### Reordenar columnas en un orden específico ###")
+print(df, "\n")

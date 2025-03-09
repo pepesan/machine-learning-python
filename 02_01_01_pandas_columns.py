@@ -332,3 +332,79 @@ print("### Crear descripciones personalizadas para cada persona ###")
 print(df[['Nombre', 'Ubicación', 'Descripción Completa']], "\n")
 
 
+# Agrupaciones de datos
+
+# Crear el DataFrame de ejemplo
+data = {
+    'ID': [101, 102, 103, 104, 105, 106, 107, 108],
+    'Nombre': ['Ana', 'Luis', 'Carlos', 'María', 'Jorge', 'Laura', 'Pedro', 'Sofía'],
+    'Edad': [23, 34, 45, 29, 40, 50, 37, 23],
+    'Ciudad': ['Madrid', 'Barcelona', 'Valencia', 'Sevilla', 'Bilbao', 'Madrid', 'Valencia', 'Sevilla'],
+    'Salario': [2500, 3200, 4000, 2800, 3700, 4200, 3500, 2900]
+}
+df = pd.DataFrame(data)
+
+# Agrupar por ciudad y calcular la media de edad
+grupo_ciudad = df.groupby('Ciudad')['Edad'].mean()
+print("### Edad promedio por ciudad ###")
+print(grupo_ciudad, "\n")
+
+# Agrupar por ciudad y edad, y contar el número de personas en cada grupo
+grupo_ciudad_edad = df.groupby(['Ciudad', 'Edad']).size()
+print("### Conteo de personas por ciudad y edad ###")
+print(grupo_ciudad_edad, "\n")
+
+# Agrupar por ciudad y calcular la media y la suma de los salarios
+grupo_salario = df.groupby('Ciudad')['Salario'].agg(['mean', 'sum', 'max', 'min'])
+print("### Estadísticas de salario por ciudad ###")
+print(grupo_salario, "\n")
+
+# Filtrar ciudades con más de una persona
+grupo_filtrado = df.groupby('Ciudad').filter(lambda x: len(x) > 1)
+print("### Ciudades con más de una persona ###")
+print(grupo_filtrado, "\n")
+
+# Recorrer cada grupo y mostrar su contenido
+for ciudad, grupo in df.groupby('Ciudad'):
+    print(f"### Grupo: {ciudad} ###")
+    print(grupo, "\n")
+
+
+# Calcular la media de salario por ciudad y agregar como nueva columna
+df['Salario Promedio Ciudad'] = df.groupby('Ciudad')['Salario'].transform('mean')
+print("### DataFrame con Salario Promedio por Ciudad ###")
+print(df, "\n")
+
+
+# Contar cuántos nombres únicos hay por ciudad
+grupo_nombres_unicos = df.groupby('Ciudad')['Nombre'].nunique()
+print("### Cantidad de nombres únicos por ciudad ###")
+print(grupo_nombres_unicos, "\n")
+
+
+# Obtener la primera persona registrada en cada ciudad
+grupo_primera_persona = df.groupby('Ciudad').first()
+print("### Primera persona registrada en cada ciudad ###")
+print(grupo_primera_persona, "\n")
+
+# Obtener la última persona registrada en cada ciudad
+grupo_ultima_persona = df.groupby('Ciudad').last()
+print("### Última persona registrada en cada ciudad ###")
+print(grupo_ultima_persona, "\n")
+
+# Ordenar por salario dentro de cada ciudad
+df_ordenado = df.sort_values(['Ciudad', 'Salario'], ascending=[True, False])
+print("### DataFrame ordenado por salario dentro de cada ciudad ###")
+print(df_ordenado, "\n")
+
+# Agrupar por ciudad y edad y calcular la media de los salarios
+df_multiindex = df.groupby(['Ciudad', 'Edad'])['Salario'].mean()
+print("### Media de salarios por ciudad y edad ###")
+print(df_multiindex, "\n")
+
+# Convertir de nuevo a DataFrame normal
+df_multiindex = df_multiindex.reset_index()
+print("### Convertir de nuevo a DataFrame normal ###")
+print(df_multiindex, "\n")
+
+

@@ -143,3 +143,74 @@ print(df.loc[[102, 104], ['Nombre', 'Edad']])
 # Seleccionar múltiples filas y columnas específicas
 print("\nFilas entre ID 102 y 104, columnas 'Nombre' y 'Edad':")
 print(df.loc[102: 104, ['Nombre', 'Edad']])
+
+
+# 1. Filtrar por una condición (personas mayores de 30 años)
+print("### Personas mayores de 30 años ###")
+filtro_1 = df[df['Edad'] > 30]
+print(filtro_1, "\n")
+
+# 2. Filtrar por varias condiciones (personas mayores de 30 años que viven en Madrid)
+print("### Personas mayores de 30 años que viven en Madrid ###")
+filtro_2 = df[(df['Edad'] > 30) & (df['Ciudad'] == 'Madrid')]
+print(filtro_2, "\n")
+
+# 3. Filtrar por texto (personas que viven en una ciudad que contiene 'a')")
+print("### Personas que viven en una ciudad que contiene la letra 'a' ###")
+filtro_3 = df[df['Ciudad'].str.contains('a', case=False, na=False)]
+print(filtro_3, "\n")
+
+# 4. Filtrar usando expresiones regulares (nombres que empiezan con "A" o "M")
+print("### Personas con nombre que empieza con 'A' o 'M' ###")
+filtro_4 = df[df['Nombre'].str.contains(r'^[AM]', regex=True)]
+print(filtro_4, "\n")
+
+# 5. Filtrar personas menores de 30 años
+print("### Personas menores de 30 años ###")
+filtro_menor_30 = df[df['Edad'] < 30]
+print(filtro_menor_30, "\n")
+
+# 6. Filtrar personas con edad distinta de 40 años
+print("### Personas con edad distinta de 40 años ###")
+filtro_diferente_40 = df[df['Edad'] != 40]
+print(filtro_diferente_40, "\n")
+
+# 7. Filtrar personas con edad entre 30 y 40 años (incluidos ambos extremos)
+print("### Personas con edad entre 30 y 40 años (incluidos) ###")
+filtro_rango_30_40 = df[(df['Edad'] >= 30) & (df['Edad'] <= 40)]
+print(filtro_rango_30_40, "\n")
+
+# 8. Filtrar personas cuya edad es un múltiplo de 5
+print("### Personas cuya edad es múltiplo de 5 ###")
+filtro_multiplo_5 = df[df['Edad'] % 5 == 0]
+print(filtro_multiplo_5, "\n")
+
+# 9. Filtrar personas cuya edad es mayor que la media del DataFrame
+print("### Personas con edad mayor que la media ###")
+edad_media = df['Edad'].mean()
+filtro_mayor_media = df[df['Edad'] > edad_media]
+print(f"Edad media: {edad_media:.2f}")
+print(filtro_mayor_media, "\n")
+
+# Manipulación de columnas
+# Agregar una nueva columna con valores fijos
+df['País'] = 'España'
+print("### Nueva columna 'País' agregada ###")
+print(df, "\n")
+
+# Agregar una nueva columna basada en una condición
+df['Mayor de Edad'] = df['Edad'] >= 18
+print("### Nueva columna 'Mayor de Edad' (True/False) ###")
+print(df, "\n")
+
+# Agregar una nueva columna calculada (Ejemplo: Edad en 10 años)
+df['Edad en 10 años'] = df['Edad'] + 10
+print("### Nueva columna 'Edad en 10 años' ###")
+print(df, "\n")
+
+# Agregar una nueva columna con valores generados aleatoriamente
+import numpy as np
+df['Puntuación'] = np.random.randint(1, 101, df.shape[0])  # Números entre 1 y 100
+print("### Nueva columna 'Puntuación' con valores aleatorios ###")
+print(df, "\n")
+
